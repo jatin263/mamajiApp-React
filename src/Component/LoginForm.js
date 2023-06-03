@@ -1,7 +1,29 @@
 import { useState } from "react";
-import history from '../history';
 
 export default function LoginForm(props){
+
+    function LoginWithApi(inputData){
+        let params={
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json; charset=utf-8",
+            },
+            body:JSON.stringify(inputData),
+        };
+        fetch("http://localhost/api1/login.php",params).then(function(response){
+            return response.json();
+        }).then(function(data){
+            if(data.objData!==""){
+                props.g(data.apiRes,data.msg,data.objData);
+            }
+            else{
+                props.f("Error","Wrong Username or Password");
+            }
+        }).catch(()=>{
+            props.f("Error","Server is Down");
+        })
+    }
+
     const [loginAs,setLogin] = useState("");
     const setUsername = ()=>{
         let n = document.getElementById('username').value;
@@ -19,13 +41,14 @@ export default function LoginForm(props){
         else if(password===""){
             props.f("Error","Password is Requried");
         }
-        else if(username==="jatin" && password==="123"){
-            props.f("Success","Login Success");
-            history.push('/home');
-        }
         else{
-            props.f("Error","Wrong Username or Password");
+            LoginWithApi({"userName":username,"passWord":password});
+            // props.f("Success","Login Success");
+            // navigate("/Home");
         }
+        // else{
+        //     props.f("Error","Wrong Username or Password");
+        // }
     }
     return(
         <>

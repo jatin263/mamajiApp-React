@@ -1,38 +1,117 @@
-.App {
+.nav-bar{
+  border: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-logo{
+  height: 90px;
+}
+
+.nav-bar img{
+  height: 100%;
+}
+#dateTimePara{
+  padding: 15px 5px;
+}
+
+.popAlerts{
+  display: flex;
+  justify-content: center;
+}
+
+.popAlerts #Warn{
+ padding: 5px;
+ text-align: center;
+ width: 100%;
+  margin: 0;
+  background-color: rgb(210, 210, 69);
+}
+
+.popAlerts #Success{
+  padding: 5px;
+  text-align: center;
+   margin: 0;
+   width: 100%;
+   background-color: rgb(33, 194, 81);
+ }
+
+
+.popAlerts #Error{
+  padding: 5px;
+  text-align: center;
+   margin: 0;
+   width: 100%;
+   color: aliceblue;
+   background-color: rgb(255, 0, 0);
+ }
+
+
+.loginForm{
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.inputStyle{
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px 2px;
+}
+
+.buttonStyle{
+  background-color: black;
+  color: aliceblue;
+  padding: 6px;
+  border: 2px transparent ;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+.btn-center{
+  display: flex;
+  justify-content: center;
+}
+.loginBody{
+  margin-top: 10vh;
+}
+
+h2{
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.HomeBody{
+  margin:10px 30px; 
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.HomeBody h3{
+  text-align: center;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.HomeContainer{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.HomeContainer div{
+  padding:10px 25px;
+  height: 100px;
+  margin-top: 10px;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+@media only screen and (max-width: 650px) {
+  .nav-bar{
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-logo{
+    height: 100px;
+  }
+  .HomeContainer div{
+    height: 150px;
+  }
+  #dateTimePara{
+  font-size: 0.8rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
