@@ -1,7 +1,5 @@
 import { useState } from "react";
-
 export default function LoginForm(props){
-
     function LoginWithApi(inputData){
         let params={
             method:"POST",

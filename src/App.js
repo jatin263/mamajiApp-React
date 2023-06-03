@@ -1,7 +1,7 @@
 import './App.css';
 import NavBar from './Component/NavBar';
 import LoginForm from './Component/LoginForm';
-import { useState } from 'react';
+import { useEffect, useState} from 'react';
 import Order from './Component/Order';
 import Alerts from './Component/Alerts';
 import {
@@ -15,6 +15,13 @@ function App() {
   const [alerts,setAlert] =  useState(null);
   const [userData,setUserData] = useState(null);
   const navigate = new useNavigate();
+ 
+  const userName=localStorage.getItem("User-name");
+    useEffect(()=>{
+      if(userName!==null){
+        navigate('/Home');
+      }
+    },[]);
   const user = (apiRes,msg,objData)=>{
     if(apiRes===1){
       if(msg==="Success"){
@@ -24,6 +31,9 @@ function App() {
           utown:objData.town
         });
         showAlert("Success","Welcome "+objData.name);
+        localStorage.setItem("User-name",objData.name);
+        localStorage.setItem("town",objData.town);
+        localStorage.setItem("userId",objData.id);
         navigate("/Home");
       }
       else{
@@ -51,8 +61,8 @@ function App() {
     <NavBar/>
     <Alerts a={alerts}/>
       <Routes>
-        <Route exact path='/' element={<LoginForm f={showAlert} g={user}/>}/>
-        <Route exact path='/Home' element={<Home udata={userData}/>}/>
+        <Route exact path='/' element={<LoginForm f={showAlert} g={user} udata={userData} navigator={navigate}/>}/>
+        <Route exact path='/Home' element={<Home udata={userData} navigator={navigate}/>}/>
         <Route exact path='/Order' element={<Order udata={userData}/>}/>
       </Routes>
     
