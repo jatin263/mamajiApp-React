@@ -8,8 +8,8 @@ export default function Home(props) {
         <div className="HomeBody">
             <h3>Hello {props.udata.uname}</h3>
             <div className="HomeContainer">
-                <div> <Link to="/Report"><img src={reportlogo} key={reportlogo} width={90} alt='Report'/><br></br>Report </Link></div>
-                <div> <Link to="/Order"><img src={orderLogo} key={orderLogo} width={90} alt='Report'/><br></br>Order </Link> </div>
+                <div> <Link to="/Report"><img src={reportlogo} key={reportlogo} width={100} alt='Report'/></Link></div>
+                <div> <Link to="/Order"><img src={orderLogo} key={orderLogo} width={100} alt='Report'/></Link> </div>
             </div>            
         </div>
     )
