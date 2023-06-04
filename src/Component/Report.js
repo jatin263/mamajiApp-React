@@ -1,5 +1,4 @@
-// import { Link } from "react-router-dom";
-
+import { useEffect } from "react";
 export default function Report(props) {
     document.title="Report - RIL CSO's Reoprting Portal";
     let dataArr=['DB Name:-','Town:-','Beat Name:-','Total TC:-','Total PC:-','Total PC%:-','PC Noodles:-',
@@ -15,6 +14,56 @@ export default function Report(props) {
     const items = [];
     let userRepJs=document.getElementsByName("userRep[]");
 
+
+    function apiResponse1(d){
+        if(d.code===2){
+            props.navigator('/ReportPreview');
+        }
+    }
+
+    useEffect(()=>{
+        if(userIds!==null){
+            checkUser();
+        }
+        else{
+          props.navigate('/');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+      },[userIds]);
+
+    function checkUser(){
+        var reports1={};
+        reports1.id=userIds;
+        let params={
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json; charset=utf-8",
+            },
+            body:JSON.stringify(reports1),
+        };
+        fetch("http://localhost/api1/checkReport.php",params).then(function(response){
+            return response.json();
+        }).then(function(data){
+            apiResponse1(data);
+        })
+    }
+
+
+    function apiResponse(d){
+        if(d.code===2){
+            props.navigator('/ReportPreview');
+        }
+        else{
+            if(d.code===1){
+                alert("Report Saved");
+                props.navigator('/ReportPreview');
+            }
+            else{
+                alert("Try Again");
+            }
+        }
+    }
+
     function reportInAPI(reports){
         let params={
             method:"POST",
@@ -26,7 +75,7 @@ export default function Report(props) {
         fetch("http://localhost/api1/reportEntry.php",params).then(function(response){
             return response.json();
         }).then(function(data){
-            console.log(data);
+            apiResponse(data);
         })
     }
 
@@ -58,6 +107,9 @@ export default function Report(props) {
         }
     }
 
+    function homeNavigate(){
+        props.navigator("/Home");
+    }
 
     function evaluteRep(){
         userRepJs[3].value=(parseInt(userRepJs[2].value)*100)/parseInt(userRepJs[1].value);
@@ -114,6 +166,7 @@ export default function Report(props) {
                 <tbody>{ items }</tbody>
             </table>
             <div className="btn-center"><button type="button" onClick={preCheck} className="buttonStyle">Submit</button> </div>
+            <div className="btn-center"><button type="button" onClick={homeNavigate} className="buttonStyle">Home</button> </div>
             {/* <div className="HomeContainer">
 
 

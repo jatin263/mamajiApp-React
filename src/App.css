@@ -20,6 +20,15 @@
   justify-content: center;
 }
 
+h3{
+  text-align: center;
+}
+
+.reportPreview{
+  display: flex;
+  justify-content: center;
+}
+
 .popAlerts #Warn{
  padding: 5px;
  text-align: center;

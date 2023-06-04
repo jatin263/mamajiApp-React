@@ -23,6 +23,9 @@ function App() {
       if(userName!==null){
         navigate('/Home');
       }
+      else{
+        navigate('/');
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     },[userName]);
   const user = (apiRes,msg,objData)=>{
@@ -68,8 +71,8 @@ function App() {
         <Route exact path='/' element={<LoginForm f={showAlert} g={user} udata={userData} navigator={navigate}/>}/>
         <Route exact path='/Home' element={<Home udata={userData} navigator={navigate}/>}/>
         <Route exact path='/Order' element={<Order udata={userData}/>}/>
-        <Route exact path='/Report' element={<Report f={showAlert} udata={userData}/>}/>
-        <Route exact path='/ReportPreview' element={<ReportPreview f={showAlert} udata={userData}/>}/>
+        <Route exact path='/Report' element={<Report f={showAlert} udata={userData} navigator={navigate}/>}/>
+        <Route exact path='/ReportPreview' element={<ReportPreview f={showAlert} udata={userData} navigator={navigate}/>}/>
       </Routes>
     
     </>
