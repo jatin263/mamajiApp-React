@@ -23,7 +23,7 @@ function NavBar(props){
             <div className='nav-logo'>
                 <img src={navLogo} key={navLogo} alt='Logo'/>
             </div>
-            <p id='dateTimePara'>{timmer}</p>
+            <p id='dateTimePara'>Date : <strong>{timmer}</strong></p>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 .nav-bar{
-  border: 2px solid black;
+  border-bottom: 2px solid black;
   display: flex;
   justify-content: space-between;
 }
@@ -84,6 +84,7 @@ h2{
   margin:10px 30px; 
 }
 .HomeBody h3{
+  font-size: 1.8rem;
   text-align: center;
 }
 .HomeContainer{
@@ -97,6 +98,12 @@ h2{
   margin-top: 10px;
   border: 2px solid black;
   border-radius: 10px;
+}
+
+#dateTimePara{
+  position: absolute;
+  top:40px;
+  right: 10px;
 }
 
 @media only screen and (max-width: 650px) {

@@ -18,7 +18,7 @@ export default function LoginForm(props){
                 props.f("Error","Wrong Username or Password");
             }
         }).catch(()=>{
-            props.f("Error","Server is Down");
+            props.f("Error","Internet is not connected");
         })
     }
 

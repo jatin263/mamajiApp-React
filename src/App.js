@@ -4,6 +4,8 @@ import LoginForm from './Component/LoginForm';
 import { useEffect, useState} from 'react';
 import Order from './Component/Order';
 import Alerts from './Component/Alerts';
+import Report from './Component/Report';
+import ReportPreview from './Component/ReportPreview';
 import {
   Routes,
   Route,useNavigate,
@@ -21,7 +23,8 @@ function App() {
       if(userName!==null){
         navigate('/Home');
       }
-    },[]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[userName]);
   const user = (apiRes,msg,objData)=>{
     if(apiRes===1){
       if(msg==="Success"){
@@ -34,6 +37,7 @@ function App() {
         localStorage.setItem("User-name",objData.name);
         localStorage.setItem("town",objData.town);
         localStorage.setItem("userId",objData.id);
+        localStorage.setItem("DbName",objData.dbName)
         navigate("/Home");
       }
       else{
@@ -64,6 +68,8 @@ function App() {
         <Route exact path='/' element={<LoginForm f={showAlert} g={user} udata={userData} navigator={navigate}/>}/>
         <Route exact path='/Home' element={<Home udata={userData} navigator={navigate}/>}/>
         <Route exact path='/Order' element={<Order udata={userData}/>}/>
+        <Route exact path='/Report' element={<Report f={showAlert} udata={userData}/>}/>
+        <Route exact path='/ReportPreview' element={<ReportPreview f={showAlert} udata={userData}/>}/>
       </Routes>
     
     </>
